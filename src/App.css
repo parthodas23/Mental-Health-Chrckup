@@ -1,0 +1,189 @@
+/* General Styles */
+body {
+  margin: 0;
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0a192f 0%, #1a365d 100%);
+}
+
+/* Main Container */
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container.split {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Form Container */
+.home-container {
+  background: #1e1e1e;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+/* Prediction Container */
+.prediction-container {
+  background: #1e1e1e;
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateX(50px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container.split .prediction-container {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Typography */
+.heading {
+  color: #e6e6e6;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.heading::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #64b5f6;
+  margin: 0.5rem auto;
+  border-radius: 2px;
+}
+
+/* Form Elements */
+.input-container, .select-container, .checkbox-container {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #e6e6e6;
+  font-weight: 600;
+}
+
+.input-field, .select-field {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #34495e;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #2c3e50;
+  color: #e6e6e6;
+}
+
+.input-field:focus, .select-field:focus {
+  outline: none;
+  border-color: #64b5f6;
+  box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.2);
+}
+
+/* Checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-input {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: #64b5f6;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  color: #e6e6e6;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #3498db 0%, #64b5f6 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s;
+}
+
+.btn:hover::after {
+  left: 50%;
+}
+
+/* Prediction Results */
+.prediction-text {
+  color: #e6e6e6;
+  line-height: 1.6;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #282828;
+  border-radius: 8px;
+}
+
+.risk-display {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #282828;
+  border-radius: 8px;
+}
+
+/* Risk Indicator Animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.risk-display svg {
+  animation: pulse 2s infinite;
+}
